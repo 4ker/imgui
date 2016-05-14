@@ -8,20 +8,6 @@ endif()
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DVK_PROTOTYPES")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVK_PROTOTYPES")
 
-# GLFW
-set(GLFW_DIR ../../../glfw) # Set this to point to a up-to-date GLFW repo
-option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" OFF)
-option(GLFW_BUILD_TESTS "Build the GLFW test programs" OFF)
-option(GLFW_BUILD_DOCS "Build the GLFW documentation" OFF)
-option(GLFW_INSTALL "Generate installation target" OFF)
-option(GLFW_DOCUMENT_INTERNALS "Include internals in documentation" OFF)
-add_subdirectory(${GLFW_DIR} binary_dir EXCLUDE_FROM_ALL)
-include_directories(${GLFW_DIR}/include)
-
-# ImGui
-set(IMGUI_DIR ../../)
-include_directories(${IMGUI_DIR})
-
 # Libraries
 find_library(VULKAN_LIBRARY
   NAMES vulkan vulkan-1)
@@ -32,5 +18,5 @@ include_directories(${GLFW_DIR}/deps)
 
 file(GLOB sources *.cpp)
 
-add_executable(vulkan_example ${sources} ${IMGUI_DIR}/imgui.cpp ${IMGUI_DIR}/imgui_draw.cpp ${IMGUI_DIR}/imgui_demo.cpp)
-target_link_libraries(vulkan_example ${LIBRARIES})
+add_executable(vulkan_example ${sources} )
+target_link_libraries(vulkan_example ${LIBRARIES} ImGui ${GLFW_LIBRARY} )

@@ -1,2 +1,5 @@
 build/*
 *~
+*.pdb
+Debug/*
+Release/*

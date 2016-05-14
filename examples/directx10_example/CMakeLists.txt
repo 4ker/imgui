@@ -1,0 +1,6 @@
+project( DirectX_10_Example )
+cmake_minimum_required( VERSION 2.6 )
+file( GLOB SRCS *.c *.cpp *.cc *.h *.hpp )
+add_executable( ${PROJECT_NAME} ${SRCS} )
+# include_directories( "C:/MinGW/x86_64-w64-mingw32/include" )
+target_link_libraries( ${PROJECT_NAME} ImGui "d3d10;d3dcompiler;dxgi.lib;imm32" )
