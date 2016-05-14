@@ -23,3 +23,5 @@ if ( WIN32 )
 
     # add_subdirectory( vulkan_example )
 endif ( WIN32 )
+
+add_subdirectory( raytrace_example )
